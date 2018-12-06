@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" version="0.2" math="SpaceEx">
+  <component id="Hires_template">
+    <param name="y1" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y2" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y3" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y4" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y5" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y6" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y7" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y8" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="stop_time" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <location id="1" name="always" x="360.0" y="150.0" width="254.0" height="126.0">
+      <invariant>0&lt;=t &amp; t&lt;=stop_time</invariant>
+      <flow>y1' == -1.71*y1 + 0.43*y2 + 8.32*y3 + 0.0007 &amp; y2' == 1.71*y1 - 8.75*y2 &amp; y3' == -10.03*y3 + 0.43*y4 + 0.035*y5 &amp; y4' ==8.32*y2 + 1.71*y3 - 1.12*y4 &amp; y5' == -1.745*y5 + 0.43*y6 + 0.43*y7 &amp; y6' == -280*y6*y8 + 0.69*y4 + 1.71*y5 - 0.43*y6 + 0.69*y7 &amp; y7' ==280*y6*y8 - 1.81*y7 &amp; y8' == -280*y6*y8 + 1.81*y7 &amp; t'==1</flow>
+    </location>
+  </component>
+  <component id="system">
+    <param name="y1" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y2" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y3" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y4" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y5" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y6" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y7" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y8" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="stop_time" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <bind component="Hires_template" as="Hires_template_1">
+      <map key="y1">y1</map>
+      <map key="y2">y2</map>
+      <map key="y3">y3</map>
+      <map key="y4">y4</map>
+      <map key="y5">y5</map>
+      <map key="y6">y6</map>
+      <map key="y7">y7</map>
+      <map key="y8">y8</map>
+      <map key="t">t</map>
+      <map key="stop_time">stop_time</map>
+    </bind>
+  </component>
+</sspaceex>
+

@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" math="SpaceEx" version="0.2">
+  <component id="fischer_global">
+    <param d1="1" d2="1" dynamics="any" local="false" name="fischer_agent_1_x" type="real"/>
+    <param d1="1" d2="1" dynamics="any" local="false" name="fischer_agent_1_i" type="real"/>
+    <param d1="1" d2="1" dynamics="any" local="false" name="g" type="real"/>
+    <param d1="1" d2="1" dynamics="any" local="false" name="fischer_agent_2_x" type="real"/>
+    <param d1="1" d2="1" dynamics="any" local="false" name="fischer_agent_2_i" type="real"/>
+    <param d1="1" d2="1" dynamics="any" local="false" name="t" type="real"/>
+    <param d1="1" d2="1" dynamics="const" local="false" name="A" type="real"/>
+    <param d1="1" d2="1" dynamics="const" local="false" name="B" type="real"/>
+    <param d1="1" d2="1" dynamics="const" local="false" name="rate" type="real"/>
+    <location id="1" name="cs_cs_default">
+      <invariant>true</invariant>
+      <flow>fischer_agent_1_x' == 0.0 &amp;
+ fischer_agent_1_i' == 0.0 &amp;
+ g' == 0.0 &amp;
+ fischer_agent_2_x' == 0.0 &amp;
+ fischer_agent_2_i' == 0.0 &amp;
+ t' == 1.0</flow>
+    </location>
+    <location id="2" name="cs_rem_default">
+      <invariant>true</invariant>
+      <flow>fischer_agent_1_x' == 0.0 &amp;
+ fischer_agent_1_i' == 0.0 &amp;
+ g' == 0.0 &amp;
+ fischer_agent_2_x' == 0.0 &amp;
+ fischer_agent_2_i' == 0.0 &amp;
+ t' == 1.0</flow>
+    </location>
+    <location id="3" name="cs_try_default">
+      <invariant>fischer_agent_2_x &lt;= A</invariant>
+      <flow>fischer_agent_1_x' == 0.0 &amp;
+ fischer_agent_1_i' == 0.0 &amp;
+ g' == 0.0 &amp;
+ fischer_agent_2_x' == rate &amp;
+ fischer_agent_2_i' == 0.0 &amp;
+ t' == 1.0</flow>
+    </location>
+    <location id="4" name="cs_waits_default">
+      <invariant>true</invariant>
+      <flow>fischer_agent_1_x' == 0.0 &amp;
+ fischer_agent_1_i' == 0.0 &amp;
+ g' == 0.0 &amp;
+ fischer_agent_2_x' == rate &amp;
+ fischer_agent_2_i' == 0.0 &amp;
+ t' == 1.0</flow>
+    </location>
+    <location id="5" name="rem_cs_default">
+      <invariant>true</invariant>
+      <flow>fischer_agent_1_x' == 0.0 &amp;
+ fischer_agent_1_i' == 0.0 &amp;
+ g' == 0.0 &amp;
+ fischer_agent_2_x' == 0.0 &amp;
+ fischer_agent_2_i' == 0.0 &amp;
+ t' == 1.0</flow>
+    </location>
+    <location id="6" name="rem_rem_default">
+      <invariant>true</invariant>
+      <flow>fischer_agent_1_x' == 0.0 &amp;
+ fischer_agent_1_i' == 0.0 &amp;
+ g' == 0.0 &amp;
+ fischer_agent_2_x' == 0.0 &amp;
+ fischer_agent_2_i' == 0.0 &amp;
+ t' == 1.0</flow>
+    </location>
+    <location id="7" name="rem_try_default">
+      <invariant>fischer_agent_2_x &lt;= A</invariant>
+      <flow>fischer_agent_1_x' == 0.0 &amp;
+ fischer_agent_1_i' == 0.0 &amp;
+ g' == 0.0 &amp;
+ fischer_agent_2_x' == rate &amp;
+ fischer_agent_2_i' == 0.0 &amp;
+ t' == 1.0</flow>
+    </location>
+    <location id="8" name="rem_waits_default">
+      <invariant>true</invariant>
+      <flow>fischer_agent_1_x' == 0.0 &amp;
+ fischer_agent_1_i' == 0.0 &amp;
+ g' == 0.0 &amp;
+ fischer_agent_2_x' == rate &amp;
+ fischer_agent_2_i' == 0.0 &amp;
+ t' == 1.0</flow>
+    </location>
+    <location id="9" name="try_cs_default">
+      <invariant>fischer_agent_1_x &lt;= A</invariant>
+      <flow>fischer_agent_1_x' == rate &amp;
+ fischer_agent_1_i' == 0.0 &amp;
+ g' == 0.0 &amp;
+ fischer_agent_2_x' == 0.0 &amp;
+ fischer_agent_2_i' == 0.0 &amp;
+ t' == 1.0</flow>
+    </location>
+    <location id="10" name="try_rem_default">
+      <invariant>fischer_agent_1_x &lt;= A</invariant>
+      <flow>fischer_agent_1_x' == rate &amp;
+ fischer_agent_1_i' == 0.0 &amp;
+ g' == 0.0 &amp;
+ fischer_agent_2_x' == 0.0 &amp;
+ fischer_agent_2_i' == 0.0 &amp;
+ t' == 1.0</flow>
+    </location>
+    <location id="11" name="try_try_default">
+      <invariant>fischer_agent_1_x &lt;= A &amp;
+ fischer_agent_2_x &lt;= A</invariant>
+      <flow>fischer_agent_1_x' == rate &amp;
+ fischer_agent_1_i' == 0.0 &amp;
+ g' == 0.0 &amp;
+ fischer_agent_2_x' == rate &amp;
+ fischer_agent_2_i' == 0.0 &amp;
+ t' == 1.0</flow>
+    </location>
+    <location id="12" name="try_waits_default">
+      <invariant>fischer_agent_1_x &lt;= A</invariant>
+      <flow>fischer_agent_1_x' == rate &amp;
+ fischer_agent_1_i' == 0.0 &amp;
+ g' == 0.0 &amp;
+ fischer_agent_2_x' == rate &amp;
+ fischer_agent_2_i' == 0.0 &amp;
+ t' == 1.0</flow>
+    </location>
+    <location id="13" name="waits_cs_default">
+      <invariant>true</invariant>
+      <flow>fischer_agent_1_x' == rate &amp;
+ fischer_agent_1_i' == 0.0 &amp;
+ g' == 0.0 &amp;
+ fischer_agent_2_x' == 0.0 &amp;
+ fischer_agent_2_i' == 0.0 &amp;
+ t' == 1.0</flow>
+    </location>
+    <location id="14" name="waits_rem_default">
+      <invariant>true</invariant>
+      <flow>fischer_agent_1_x' == rate &amp;
+ fischer_agent_1_i' == 0.0 &amp;
+ g' == 0.0 &amp;
+ fischer_agent_2_x' == 0.0 &amp;
+ fischer_agent_2_i' == 0.0 &amp;
+ t' == 1.0</flow>
+    </location>
+    <location id="15" name="waits_try_default">
+      <invariant>fischer_agent_2_x &lt;= A</invariant>
+      <flow>fischer_agent_1_x' == rate &amp;
+ fischer_agent_1_i' == 0.0 &amp;
+ g' == 0.0 &amp;
+ fischer_agent_2_x' == rate &amp;
+ fischer_agent_2_i' == 0.0 &amp;
+ t' == 1.0</flow>
+    </location>
+    <location id="16" name="waits_waits_default">
+      <invariant>true</invariant>
+      <flow>fischer_agent_1_x' == rate &amp;
+ fischer_agent_1_i' == 0.0 &amp;
+ g' == 0.0 &amp;
+ fischer_agent_2_x' == rate &amp;
+ fischer_agent_2_i' == 0.0 &amp;
+ t' == 1.0</flow>
+    </location>
+    <transition asap="false" bezier="false" source="6" target="10" timedriven="false">
+      <guard>g == 0.0</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="6" target="10" timedriven="false">
+      <guard>g == 0.0</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="6" target="7" timedriven="false">
+      <guard>g == 0.0</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="6" target="7" timedriven="false">
+      <guard>g == 0.0</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="7" target="11" timedriven="false">
+      <guard>g == 0.0</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="7" target="11" timedriven="false">
+      <guard>g == 0.0</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="7" target="8" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_2_x' == 0.0 &amp;
+ g' == 2.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="7" target="8" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_2_x' == 0.0 &amp;
+ g' == 2.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="8" target="12" timedriven="false">
+      <guard>g == 0.0</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="8" target="12" timedriven="false">
+      <guard>g == 0.0</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="8" target="5" timedriven="false">
+      <guard>g == fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="8" target="5" timedriven="false">
+      <guard>g == fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="8" target="6" timedriven="false">
+      <guard>g &lt; fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="8" target="6" timedriven="false">
+      <guard>g &lt; fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="8" target="6" timedriven="false">
+      <guard>g &gt; fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="8" target="6" timedriven="false">
+      <guard>g &gt; fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="5" target="9" timedriven="false">
+      <guard>g == 0.0</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="5" target="9" timedriven="false">
+      <guard>g == 0.0</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="10" target="11" timedriven="false">
+      <guard>g == 0.0</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="10" target="11" timedriven="false">
+      <guard>g == 0.0</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="10" target="14" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_1_x' == 0.0 &amp;
+ g' == 1.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="10" target="14" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_1_x' == 0.0 &amp;
+ g' == 1.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="11" target="15" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_1_x' == 0.0 &amp;
+ g' == 1.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="11" target="15" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_1_x' == 0.0 &amp;
+ g' == 1.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="11" target="12" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_2_x' == 0.0 &amp;
+ g' == 2.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="11" target="12" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_2_x' == 0.0 &amp;
+ g' == 2.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="12" target="9" timedriven="false">
+      <guard>g == fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="12" target="9" timedriven="false">
+      <guard>g == fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="12" target="10" timedriven="false">
+      <guard>g &lt; fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="12" target="10" timedriven="false">
+      <guard>g &lt; fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="12" target="10" timedriven="false">
+      <guard>g &gt; fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="12" target="10" timedriven="false">
+      <guard>g &gt; fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="12" target="16" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_1_x' == 0.0 &amp;
+ g' == 1.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="12" target="16" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_1_x' == 0.0 &amp;
+ g' == 1.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="9" target="13" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_1_x' == 0.0 &amp;
+ g' == 1.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="9" target="13" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_1_x' == 0.0 &amp;
+ g' == 1.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="14" target="2" timedriven="false">
+      <guard>g == fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="14" target="2" timedriven="false">
+      <guard>g == fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="14" target="6" timedriven="false">
+      <guard>g &lt; fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="14" target="6" timedriven="false">
+      <guard>g &lt; fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="14" target="6" timedriven="false">
+      <guard>g &gt; fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="14" target="6" timedriven="false">
+      <guard>g &gt; fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="14" target="15" timedriven="false">
+      <guard>g == 0.0</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="14" target="15" timedriven="false">
+      <guard>g == 0.0</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="15" target="3" timedriven="false">
+      <guard>g == fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="15" target="3" timedriven="false">
+      <guard>g == fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="15" target="7" timedriven="false">
+      <guard>g &lt; fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="15" target="7" timedriven="false">
+      <guard>g &lt; fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="15" target="7" timedriven="false">
+      <guard>g &gt; fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="15" target="7" timedriven="false">
+      <guard>g &gt; fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="15" target="16" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_2_x' == 0.0 &amp;
+ g' == 2.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="15" target="16" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_2_x' == 0.0 &amp;
+ g' == 2.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="16" target="4" timedriven="false">
+      <guard>g == fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="16" target="4" timedriven="false">
+      <guard>g == fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="16" target="8" timedriven="false">
+      <guard>g &lt; fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="16" target="8" timedriven="false">
+      <guard>g &lt; fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="16" target="8" timedriven="false">
+      <guard>g &gt; fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="16" target="8" timedriven="false">
+      <guard>g &gt; fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="16" target="13" timedriven="false">
+      <guard>g == fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="16" target="13" timedriven="false">
+      <guard>g == fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="16" target="14" timedriven="false">
+      <guard>g &lt; fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="16" target="14" timedriven="false">
+      <guard>g &lt; fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="16" target="14" timedriven="false">
+      <guard>g &gt; fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="16" target="14" timedriven="false">
+      <guard>g &gt; fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="13" target="1" timedriven="false">
+      <guard>g == fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="13" target="1" timedriven="false">
+      <guard>g == fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="13" target="5" timedriven="false">
+      <guard>g &lt; fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="13" target="5" timedriven="false">
+      <guard>g &lt; fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="13" target="5" timedriven="false">
+      <guard>g &gt; fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="13" target="5" timedriven="false">
+      <guard>g &gt; fischer_agent_1_i &amp;
+ fischer_agent_1_x &gt;= B</guard>
+      <assignment>fischer_agent_1_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="2" target="3" timedriven="false">
+      <guard>g == 0.0</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="2" target="3" timedriven="false">
+      <guard>g == 0.0</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="3" target="4" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_2_x' == 0.0 &amp;
+ g' == 2.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="3" target="4" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_2_x' == 0.0 &amp;
+ g' == 2.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="4" target="1" timedriven="false">
+      <guard>g == fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="4" target="1" timedriven="false">
+      <guard>g == fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="4" target="2" timedriven="false">
+      <guard>g &lt; fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="4" target="2" timedriven="false">
+      <guard>g &lt; fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="4" target="2" timedriven="false">
+      <guard>g &gt; fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="4" target="2" timedriven="false">
+      <guard>g &gt; fischer_agent_2_i &amp;
+ fischer_agent_2_x &gt;= B</guard>
+      <assignment>fischer_agent_2_x' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="1" target="6" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_1_x' == 0.0 &amp;
+ fischer_agent_2_x' == 0.0 &amp;
+ g' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+    <transition asap="false" bezier="false" source="1" target="6" timedriven="false">
+      <guard>true</guard>
+      <assignment>fischer_agent_1_x' == 0.0 &amp;
+ fischer_agent_2_x' == 0.0 &amp;
+ g' == 0.0</assignment>
+      <labelposition/>
+      <middlepoint/>
+    </transition>
+  </component>
+  <component id="fischer_sys">
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="fischer_agent_1_x" type="real"/>
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="fischer_agent_1_i" type="real"/>
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="g" type="real"/>
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="fischer_agent_2_x" type="real"/>
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="fischer_agent_2_i" type="real"/>
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="t" type="real"/>
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="A" type="real"/>
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="B" type="real"/>
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="rate" type="real"/>
+    <bind as="fischer_global_1" component="fischer_global">
+      <map key="fischer_agent_1_x">fischer_agent_1_x</map>
+      <map key="fischer_agent_1_i">fischer_agent_1_i</map>
+      <map key="g">g</map>
+      <map key="fischer_agent_2_x">fischer_agent_2_x</map>
+      <map key="fischer_agent_2_i">fischer_agent_2_i</map>
+      <map key="t">t</map>
+      <map key="A">A</map>
+      <map key="B">B</map>
+      <map key="rate">rate</map>
+    </bind>
+  </component>
+</sspaceex>
+

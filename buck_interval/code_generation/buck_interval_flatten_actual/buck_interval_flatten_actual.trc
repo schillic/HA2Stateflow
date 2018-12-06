@@ -1,0 +1,494 @@
+-- ****************************************************************************
+--
+--  Trace file: buck_interval_flatten_actual.trc
+--
+--  RTI1103 7.2 (02-May-2014)
+--  Wed Jan 13 19:17:17 2016
+--
+--  Used options:
+--    TRCGenerateVirtualBlocks      = 1
+--    TRCGenerateLabels             = 1
+--    TRCGenerateStates             = 0
+--    TRCGenerateDerivatives        = 0
+--    TRCGenerateParamValues        = 0
+--    TRCGenerateApplicationKeyword = 0
+--    TRCOnlyGlobals                = 0
+--    TRCIsOmitVdOn                 = 0
+--
+--  Trace file format: 2
+--
+--  (c) Copyright 2008, dSPACE GmbH. All rights reserved.
+--
+-- ****************************************************************************
+
+-- ******** Keywords **********************************************************
+
+-- _application "buck_interval_flatten_actual.map"
+
+_genname     "RTI"
+_genversion  "7.2"
+_gendate     "01/13/2016 19:17:19"
+_description ""
+_author      "RTI1103 7.2 (02-May-2014)"
+_model       "buck_interval_flatten_actual.mdl"
+
+-- Default data type formats
+_floating_point_type(64,IEEE)
+_integer_type(32)
+
+-- No Data Capture blocks within model: use base sample time as sampling period
+sampling_period[0]
+{
+  value:       2.0E-5
+  alias:       "HostService"
+  increment:   2.0E-5
+  unit:        "s"
+}
+
+
+
+-- Type definitions for arrays
+typedef buck_interval_flatten_actual_ArrayDT0_4 flt(64,IEEE)[4]
+
+
+-- ******** Simulation control variables **************************************
+
+finalTime
+{
+ type:  flt(64,IEEE)*
+ alias: "finalTime"
+ desc:  "Simulation stop time. When reached, simState switches to STOP."
+ flags:  SYSTEM|READONLY
+ unit:  "s"
+}
+
+currentTime
+{
+ type:  flt(64,IEEE)*
+ alias: "currentTime"
+ desc:  "Current simulation time. Increments with execution of Timer Task 1."
+ flags: SYSTEM|READONLY
+ unit:  "s"
+}
+
+modelStepSize
+{
+ type:  flt(64,IEEE)
+ alias: "modelStepSize"
+ desc:  "Fixed step size of the model, sample time of Timer Task 1."
+ flags: SYSTEM|READONLY
+ unit:  "s"
+}
+
+simState
+{
+ type:  int(32)
+ alias: "simState"
+ desc:  "Simulation state: STOP=0 PAUSE=1 RUN=2"
+ flags: SYSTEM
+ unit:  "-"
+}
+
+msg_last_error_no
+{
+ type:  uint(32)
+ alias: "errorNumber"
+ desc:  "Error number of last error message (zero if no error)."
+ unit:  "-"
+ flags: SYSTEM|READONLY
+}
+
+rtiAssertionMode
+{
+ type:  int(32)
+ alias: "rtiAssertionMode"
+ desc:  "Assertion Mode: OFF=0 WARN=1 STOP=2"
+ flags: SYSTEM
+ unit:  "-"
+}
+
+
+
+-- ******** Model variables ***************************************************
+
+group "Model Root"
+{
+ flags: COLLAPSED
+}
+  
+  
+	group "RTI Data" -- subsystem-group
+	{
+	 flags: COLLAPSED
+	 desc:  ""
+	}
+
+
+	endgroup -- subsystem-group "RTI Data"
+  
+  
+	group "Source_1" -- subsystem-group
+	{
+	 flags: COLLAPSED
+	 desc:  ""
+	}
+
+
+
+		group "Command" -- block-group
+		{
+		 block: "Constant"
+		 desc:  ""
+		 flags: BLOCK|COLLAPSED
+		}
+			-- Skipping output Out1
+			p_1_buck_interval_flatten_actual_boolean_T_1[0]
+			{
+			 type:    uint(8)*
+			 alias:   "Value"
+			 range:   < 0 ; 1 >
+			 bitmask: 0x01
+			 flags:   PARAM
+			}
+
+
+		endgroup -- block-group "Command"
+
+		group "Constant" -- block-group
+		{
+		 block: "Constant"
+		 desc:  ""
+		 flags: BLOCK|COLLAPSED
+		}
+			-- Skipping output Out1
+			p_1_buck_interval_flatten_actual_real_T_0[0]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "Value"
+			 flags:   PARAM
+			}
+
+
+		endgroup -- block-group "Constant"
+
+		group "Data Type Conversion" -- block-group
+		{
+		 block: "DataTypeConversion"
+		 desc:  ""
+		 flags: BLOCK|COLLAPSED
+		}
+			p_0_buck_interval_flatten_actual_boolean_T_1[0]
+			{
+			 type:    uint(8)*
+			 alias:   "Out1"
+			 desc:    ""
+			 range:   < 0 ; 1 >
+			 bitmask: 0x01
+			 flags:   OUTPUT|READONLY
+			}
+
+
+		endgroup -- block-group "Data Type Conversion"
+
+		group "From" -- block-group
+		{
+		 block: "From"
+		 desc:  ""
+		 flags: BLOCK|COLLAPSED
+		}
+			p_0_buck_interval_flatten_actual_real_T_0[1]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "Out1"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+
+
+		endgroup -- block-group "From"
+
+		group "Gain1" -- block-group
+		{
+		 block: "Gain"
+		 desc:  ""
+		 flags: BLOCK|COLLAPSED
+		}
+			p_0_buck_interval_flatten_actual_real_T_0[1]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "Out1"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+			p_1_buck_interval_flatten_actual_real_T_0[1]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "Gain"
+			 flags:   PARAM
+			}
+
+
+		endgroup -- block-group "Gain1"
+
+		group "SW" -- block-group
+		{
+		 block: "Goto"
+		 desc:  ""
+		 flags: BLOCK|COLLAPSED
+		}
+			p_0_buck_interval_flatten_actual_boolean_T_1[1]
+			{
+			 type:    uint(8)*
+			 alias:   "In1"
+			 desc:    ""
+			 range:   < 0 ; 1 >
+			 bitmask: 0x01
+			 flags:   SINK|READONLY
+			}
+
+
+
+		endgroup -- block-group "SW"
+
+		group "Vo" -- block-group
+		{
+		 block: "Goto"
+		 desc:  ""
+		 flags: BLOCK|COLLAPSED
+		}
+			p_0_buck_interval_flatten_actual_real_T_0[1]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "In1"
+			 desc:    ""
+			 flags:   SINK|READONLY
+			}
+
+
+
+		endgroup -- block-group "Vo"
+
+		group "Logical\nOperator" -- block-group
+		{
+		 block: "Logic"
+		 desc:  ""
+		 flags: BLOCK|COLLAPSED
+		}
+			p_0_buck_interval_flatten_actual_boolean_T_1[1]
+			{
+			 type:    uint(8)*
+			 alias:   "Out1"
+			 desc:    ""
+			 range:   < 0 ; 1 >
+			 bitmask: 0x01
+			 flags:   OUTPUT|READONLY
+			}
+
+
+		endgroup -- block-group "Logical\nOperator"
+
+  
+  
+		group "DS1103MUX_ADC_CON1" -- subsystem-group
+		{
+		 flags: COLLAPSED
+		 desc:  ""
+		}
+
+			p_0_buck_interval_flatten_actual_real_T_0[0]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "ADC"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+
+		endgroup -- subsystem-group "DS1103MUX_ADC_CON1"
+  
+  
+		group "DS1103SL_DSP_BIT_OUT_C7" -- subsystem-group
+		{
+		 flags: COLLAPSED
+		 desc:  ""
+		}
+
+
+		endgroup -- subsystem-group "DS1103SL_DSP_BIT_OUT_C7"
+  
+  
+		group "buck_dcm_vs2_interval_sys_1" -- subsystem-group
+		{
+		 flags: COLLAPSED
+		 desc:  ""
+		}
+
+			p_0_buck_interval_flatten_actual_real_T_0[2]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "il_out"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+			p_0_buck_interval_flatten_actual_real_T_0[3]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "t_out"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+			p_0_buck_interval_flatten_actual_real_T_0[4]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "vc_out"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+			p_0_buck_interval_flatten_actual_real_T_0[5]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "mode_out_out"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+			p_0_buck_interval_flatten_actual_real_T_0[6]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "buck_dcm_vs2_interval_sys_1_location"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+
+
+
+
+		endgroup -- subsystem-group "buck_dcm_vs2_interval_sys_1"
+
+		p_0_buck_interval_flatten_actual_real_T_0[0]
+		{
+		 type:    flt(64,IEEE)*
+		 alias:   "<>"
+		 origin:  "buck_interval_flatten_actual/Source_1/DS1103MUX_ADC_CON1/ADC"
+		 flags:   LABEL|READONLY
+		}
+
+	endgroup -- subsystem-group "Source_1"
+
+
+
+
+endgroup -- "Model Root"
+-- ******** Tunable Parameters ************************************************
+
+-- InlineParameters is off: no separate group for Tunable Parameters
+
+
+-- ******** State Machine Data ************************************************
+
+group "State Machine Data"
+{
+ flags: COLLAPSED
+}
+
+
+endgroup
+
+
+-- ******** Data Store Memories ***********************************************
+
+-- No Data Store Memories within the model.
+
+
+-- ******** Labels ************************************************************
+
+group "Labels"
+{
+ flags: COLLAPSED
+}
+
+endgroup
+
+-- ******** RTT Dynamic Variables *********************************************
+
+-- Generation of RTT Dynamic Variables turned off with EnableRealTimeTesting option.
+
+-- ******** User variables from model_usr.trc *********************************
+
+-- RTI_USR_TRC_BEGIN
+
+-- No user file buck_interval_flatten_actual_usr.trc found.
+
+-- RTI_USR_TRC_END
+-- ******** Task Information variables ****************************************
+
+group "Task Info"
+{
+ flags: COLLAPSED
+}
+  group "Timer Task 1"
+  {
+   flags: COLLAPSED
+  }
+
+  pRti_TIMERA_STime
+  {
+   type:  flt(64,IEEE)*
+   alias: "sampleTime"
+   flags: SYSTEM|READONLY
+  }
+  pRti_TIMERA_TTime
+  {
+   type:  flt(64,IEEE)*
+   alias: "turnaroundTime"
+   flags: SYSTEM|READONLY
+  }
+  pRti_TIMERA_TState
+  {
+   type:  int(32)*
+   alias: "state"
+   flags: SYSTEM|READONLY
+  }
+  pRti_TIMERA_OType
+  {
+   type:  int(32)*
+   alias: "overrunCheckType"
+   flags: SYSTEM|READONLY
+  }
+  pRti_TIMERA_OMax
+  {
+   type:  int(32)*
+   alias: "overrunQueueMax"
+   flags: SYSTEM|READONLY
+  }
+  pRti_TIMERA_ORpt
+  {
+   type:  int(32)*
+   alias: "overrunQueueCount"
+   flags: SYSTEM|READONLY
+  }
+  pRti_TIMERA_OCnt
+  {
+   type:  int(32)*
+   alias: "overrunCount"
+   flags: SYSTEM|READONLY
+  }
+  pRti_TIMERA_TCnt
+  {
+   type:  flt(64,IEEE)*
+   alias: "taskCallCount"
+   flags: SYSTEM|READONLY
+  }
+  pRti_TIMERA_Prio
+  {
+   type:  int(32)*
+   alias: "priority"
+   flags: SYSTEM|READONLY
+  }
+  endgroup
+
+
+endgroup
+
+-- ******** [EOF] *************************************************************
+
+
+

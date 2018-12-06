@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" version="0.2" math="SpaceEx">
+  <component id="buckboost_template">
+    <param name="il" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="vc" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="gt" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="hop" type="label" local="true" />
+    <param name="a00o" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="a01o" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="a10o" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="a11o" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="a00c" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="a01c" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="a10c" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="a11c" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="bounds" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="T" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="D" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="b0o" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="b1o" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="b0c" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="b1c" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="Vs" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="tmax" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <location id="1" name="charging" x="362.0" y="231.5" width="369.0" height="124.0">
+      <invariant>gt &gt;= 0 &amp; gt &lt;= tmax &amp; D &gt;= 0 &amp; D &lt;= 1 &amp; vc &gt;= -bounds &amp; vc &lt;= 12.3</invariant>
+      <flow>il' == (a00c * il + a01c * vc + b0c * Vs) &amp; vc' == (a10c * il + a11c * vc + b1c * Vs) &amp; t' == 1 &amp; gt' == 1</flow>
+    </location>
+    <location id="2" name="discharging" x="902.5" y="240.5" width="359.0" height="122.0">
+      <invariant>gt &gt;= 0 &amp; gt &lt;= tmax &amp; D &gt;= 0 &amp; D &lt;= 1 &amp; vc &gt;= 11.7 &amp; vc &lt;= bounds</invariant>
+      <flow>il' == (a00o * il + a01o * vc + b0o * Vs) &amp; vc' == (a10o * il + a11o * vc + b1o * Vs) &amp; t' == 1 &amp; gt' == 1</flow>
+    </location>
+    <transition source="1" target="2">
+      <label>hop</label>
+      <guard>vc &gt;= 12.1</guard>
+      <labelposition x="-150.0" y="-75.0" width="284.0" height="72.0" />
+      <middlepoint x="591.25" y="139.5" />
+    </transition>
+    <transition source="2" target="1">
+      <label>hop</label>
+      <guard>vc &lt;= 11.9</guard>
+      <labelposition x="-150.0" y="10.0" width="374.0" height="94.0" />
+      <middlepoint x="579.75" y="376.0" />
+    </transition>
+  </component>
+  <component id="buckboost">
+    <param name="il" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="gt" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="D" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="vc" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="Vs" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="tmax" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <bind component="buckboost_template" as="buckboost_template_1" x="496.0" y="118.0">
+      <map key="il">il</map>
+      <map key="a00o">-196.2264</map>
+      <map key="a01o">-377.3585</map>
+      <map key="a10o">454.5455</map>
+      <map key="a11o">-45.454545454545450</map>
+      <map key="a00c">-2.716981132075472e+02</map>
+      <map key="a01c">-377.3585</map>
+      <map key="a10c">454.5455</map>
+      <map key="a11c">-45.454545454545450</map>
+      <map key="bounds">1000</map>
+      <map key="t">t</map>
+      <map key="gt">gt</map>
+      <map key="T">2.000000000000000e-05</map>
+      <map key="D">D</map>
+      <map key="b0o">0</map>
+      <map key="b1o">0</map>
+      <map key="b0c">377.3585</map>
+      <map key="b1c">0</map>
+      <map key="Vs">Vs</map>
+      <map key="tmax">tmax</map>
+      <map key="vc">vc</map>
+    </bind>
+  </component>
+</sspaceex>
+

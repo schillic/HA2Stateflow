@@ -1,0 +1,111 @@
+-- ****************************************************************************
+--
+--  Trace file: buck_interval_flatten.trc
+--
+--  RTI1103 7.2 (02-May-2014)
+--  Wed Jan 13 19:02:03 2016
+--
+--  Used options:
+--    TRCGenerateVirtualBlocks      = 1
+--    TRCGenerateLabels             = 1
+--    TRCGenerateStates             = 0
+--    TRCGenerateDerivatives        = 0
+--    TRCGenerateParamValues        = 0
+--    TRCGenerateApplicationKeyword = 0
+--    TRCOnlyGlobals                = 0
+--    TRCIsOmitVdOn                 = 0
+--
+--  Trace file format: 2
+--
+--  (c) Copyright 2008, dSPACE GmbH. All rights reserved.
+--
+-- ****************************************************************************
+
+-- ******** Keywords **********************************************************
+
+-- _application "buck_interval_flatten.map"
+
+_genname     "RTI"
+_genversion  "7.2"
+_gendate     "01/13/2016 19:02:04"
+_description ""
+_author      "RTI1103 7.2 (02-May-2014)"
+_model       "buck_interval_flatten.mdl"
+
+-- Default data type formats
+_floating_point_type(64,IEEE)
+_integer_type(32)
+
+-- No Data Capture blocks within model: use base sample time as sampling period
+sampling_period[0]
+{
+  value:       2.0E-5
+  alias:       "HostService"
+  increment:   2.0E-5
+  unit:        "s"
+}
+
+
+
+-- Type definitions for arrays
+typedef buck_interval_flatten_ArrayDT0_4 flt(64,IEEE)[4]
+
+
+-- ******** Simulation control variables **************************************
+
+finalTime
+{
+ type:  flt(64,IEEE)*
+ alias: "finalTime"
+ desc:  "Simulation stop time. When reached, simState switches to STOP."
+ flags:  SYSTEM|READONLY
+ unit:  "s"
+}
+
+currentTime
+{
+ type:  flt(64,IEEE)*
+ alias: "currentTime"
+ desc:  "Current simulation time. Increments with execution of Timer Task 1."
+ flags: SYSTEM|READONLY
+ unit:  "s"
+}
+
+modelStepSize
+{
+ type:  flt(64,IEEE)
+ alias: "modelStepSize"
+ desc:  "Fixed step size of the model, sample time of Timer Task 1."
+ flags: SYSTEM|READONLY
+ unit:  "s"
+}
+
+simState
+{
+ type:  int(32)
+ alias: "simState"
+ desc:  "Simulation state: STOP=0 PAUSE=1 RUN=2"
+ flags: SYSTEM
+ unit:  "-"
+}
+
+msg_last_error_no
+{
+ type:  uint(32)
+ alias: "errorNumber"
+ desc:  "Error number of last error message (zero if no error)."
+ unit:  "-"
+ flags: SYSTEM|READONLY
+}
+
+rtiAssertionMode
+{
+ type:  int(32)
+ alias: "rtiAssertionMode"
+ desc:  "Assertion Mode: OFF=0 WARN=1 STOP=2"
+ flags: SYSTEM
+ unit:  "-"
+}
+
+
+

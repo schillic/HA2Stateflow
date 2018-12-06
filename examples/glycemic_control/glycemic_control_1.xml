@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" version="0.2" math="SpaceEx">
+  <component id="glycemic">
+    <param name="G" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="X" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="I" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="tl" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <location id="2" name="loc1" x="240.0" y="219.0" width="316.0" height="174.0">
+      <invariant>G &lt;= 4 &amp; t &lt;= 720</invariant>
+      <flow>G' == - X*(G + 4.5) + 0.5*exp(-0.05 * t) &amp;
+X' == -0.025*X + 0.013*I &amp;
+I' == -0.093*(I + 0.015) + 0.00069444 &amp;
+t' == 1 &amp;
+tl' == 1</flow>
+    </location>
+    <location id="1" name="loc2" x="620.0" y="217.0" width="324.0" height="172.0">
+      <invariant>4 &lt;= G &lt;= 8 &amp; t &lt;= 720</invariant>
+      <flow>G' == - X*(G + 4.5) + 0.5*exp(-0.05 * t) &amp;
+X' ==-0.025*X + 0.013*I &amp;
+I' == -0.093*(I + 0.015) + 0.00069444*G - 0.002083333 &amp; t' == 1 &amp; tl' == 1</flow>
+    </location>
+    <location id="3" name="loc3" x="355.0" y="453.0" width="324.0" height="172.0">
+      <invariant>G &gt;=8 &amp; t &lt;= 720</invariant>
+      <flow>G' == - X*(G + 4.5) + 0.5*exp(-0.05 * t) &amp;
+X' == -0.025*X + 0.013*I&amp;
+I' == -0.093*(I + 0.015) + 0.003472222 &amp;
+t' == 1 &amp;
+tl' == 1</flow>
+    </location>
+    <transition source="2" target="1">
+      <guard>G == 4 &amp; tl &gt;= 0.2</guard>
+      <assignment>tl := 0</assignment>
+      <labelposition x="-274.0" y="-122.0" width="260.0" height="96.0" />
+      <middlepoint x="418.5" y="129.0" />
+    </transition>
+    <transition source="1" target="2">
+      <guard>G == 4 &amp; tl &gt;= 0.2</guard>
+      <assignment>tl := 0</assignment>
+      <labelposition x="24.0" y="-193.0" width="220.0" height="100.0" />
+    </transition>
+    <transition source="1" target="3">
+      <guard>G == 8 &amp; tl &gt;= 0.2</guard>
+      <assignment>tl := 0</assignment>
+      <labelposition x="36.0" y="-21.0" width="196.0" height="76.0" />
+      <middlepoint x="589.5" y="391.0" />
+    </transition>
+    <transition source="3" target="1">
+      <guard>G == 8 &amp; tl &gt;= 0.2</guard>
+      <assignment>tl := 0</assignment>
+      <labelposition x="-245.0" y="-32.0" width="180.0" height="58.0" />
+      <middlepoint x="436.5" y="340.0" />
+    </transition>
+  </component>
+  <component id="sys_glycemic">
+    <param name="G" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="X" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="I" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="tl" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <bind component="glycemic" as="glycemic_1" x="355.0" y="236.0">
+      <map key="G">G</map>
+      <map key="X">X</map>
+      <map key="I">I</map>
+      <map key="t">t</map>
+      <map key="tl">tl</map>
+    </bind>
+  </component>
+</sspaceex>
+

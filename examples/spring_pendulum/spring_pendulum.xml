@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" version="0.2" math="SpaceEx">
+  <component id="main">
+    <param name="r" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="theta" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="dr" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="dtheta" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <location id="1" name="running" x="408.0" y="226.0" width="428.0" height="280.0">
+      <flow>r' ==dr &amp;
+theta' == dtheta &amp; 
+dr' == r*dtheta^2 + 9.8*cos(theta) - 2*(r - 1) &amp;
+dtheta' == (-2*dr*dtheta - 9.8*sin(theta))/r</flow>
+    </location>
+  </component>
+  <component id="sys">
+    <param name="r" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="theta" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="dr" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="dtheta" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <bind component="main" as="main_1" x="398.0" y="281.0">
+      <map key="r">r</map>
+      <map key="theta">theta</map>
+      <map key="dr">dr</map>
+      <map key="dtheta">dtheta</map>
+    </bind>
+  </component>
+</sspaceex>
+

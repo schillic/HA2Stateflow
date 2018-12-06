@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" math="SpaceEx" version="0.2">
+  <component id="buck_dcm_vs2_interval_sys">
+    <note>Created by Hyst v1.2
+Hybrid Automaton in SpaceEx
+Converted from file: ..\examples\buck_dcm_vs2_interval.xml
+Command Line arguments: -flatten 0 -spaceex ..\examples\buck_dcm_vs2_interval.xml</note>
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="il" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="t" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="vc" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="mode_out" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="rci1" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="rcv1" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="rci2" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="rb1" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="rcv2" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="roi1" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="rov1" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="roi2" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="rov2" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="rdv2" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="buckboost_template_1_a00o" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="buckboost_template_1_a01o" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="buckboost_template_1_a10o" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="buckboost_template_1_a11o" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="buckboost_template_1_a00c" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="buckboost_template_1_a01c" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="buckboost_template_1_a10c" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="buckboost_template_1_a11c" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="buckboost_template_1_bounds" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="buckboost_template_1_b0o" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="buckboost_template_1_b1o" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="buckboost_template_1_b0c" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="buckboost_template_1_b1c" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="Vs" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="tmax" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="VcH" type="real" />
+    <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="VcL" type="real" />
+    <location id="1" name="charging_charging_controller" x="303.0" y="209.0" width="336.0" height="178.0">
+      <invariant>t &gt;= 0 &amp;
+ t &lt;= tmax &amp;
+ il &gt;= 0 &amp;
+ vc &gt;= 0 &amp;
+ rci1 &gt;= -97.8505 &amp;
+ rci1 &lt;= 97.8505 &amp;
+ rcv1 &gt;= -392.6099 &amp;
+ rcv1 &lt;= 392.6099 &amp;
+ rb1 &gt;= -181.2046 &amp;
+ rb1 &lt;= 181.2046 &amp;
+ rci2 &gt;= -163.7018 &amp;
+ rci2 &lt;= 163.7018 &amp;
+ rcv2 &gt;= -94.6211 &amp;
+ rcv2 &lt;= 94.6211 &amp;
+ mode_out == 2 &amp;
+ vc &lt;= VcH &amp;
+ mode_out == 2</invariant>
+      <flow>il' == buckboost_template_1_a00c * il + rci1 + buckboost_template_1_a01c * vc + rcv1 + buckboost_template_1_b0c * Vs + rb1 &amp;
+ vc' == buckboost_template_1_a10c * il + rci2 + buckboost_template_1_a11c * vc + rcv2 + buckboost_template_1_b1c * Vs &amp;
+ t' == 1 &amp;
+ mode_out' == 0</flow>
+    </location>
+    <location id="4" name="discharging_discharging_controller" x="592.0" y="595.0" width="268.0" height="174.0">
+      <invariant>t &gt;= 0 &amp;
+ t &lt;= tmax &amp;
+ vc &gt;= 0 &amp;
+ il &gt;= 0 &amp;
+ roi1 &gt;= -70.6698 &amp;
+ roi1 &lt;= 70.6698 &amp;
+ rov1 &gt;= -392.6099 &amp;
+ rov1 &lt;= 392.6099 &amp;
+ roi2 &gt;= -163.7018 &amp;
+ roi2 &lt;= 163.7018 &amp;
+ rov2 &gt;= -94.6211 &amp;
+ rov2 &lt;= 94.6211 &amp;
+ mode_out == 1 &amp;
+ vc &gt;= VcL &amp;
+ mode_out == 1</invariant>
+      <flow>il' == buckboost_template_1_a00o * il + roi1 + buckboost_template_1_a01o * vc + rov1 + buckboost_template_1_b0o * Vs &amp;
+ vc' == buckboost_template_1_a10o * il + roi2 + buckboost_template_1_a11o * vc + rov2 + buckboost_template_1_b1o * Vs &amp;
+ t' == 1 &amp;
+ mode_out' == 0</flow>
+    </location>
+    <location id="6" name="dcm_discharging_controller" x="950.0" y="298.0" width="480.0" height="284.0">
+      <invariant>t &gt;= 0 &amp;
+ t &lt;= tmax &amp;
+ vc &gt;= 0 &amp;
+ il &lt;= 0 &amp;
+ rdv2 &gt;= -94.6211 &amp;
+ rdv2 &lt;= 94.6211 &amp;
+ mode_out == 1 &amp;
+ vc &gt;= VcL &amp;
+ mode_out == 1</invariant>
+      <flow>il' == 0 &amp;
+ vc' == buckboost_template_1_a11o * vc + rdv2 + buckboost_template_1_b1o * Vs &amp;
+ t' == 1 &amp;
+ mode_out' == 0</flow>
+    </location>
+    <transition asap="false" bezier="false" source="1" target="4" timedriven="false">
+      <guard>vc &gt;= VcH</guard>
+      <assignment>mode_out' == 1</assignment>
+      <labelposition x="-386.0" y="-246.0" />
+      <middlepoint />
+    </transition>
+    <transition asap="false" bezier="false" source="4" target="1" timedriven="false">
+      <guard>vc &lt;= VcL</guard>
+      <assignment>mode_out' == 2</assignment>
+      <labelposition x="92.0" y="-338.0" />
+      <middlepoint />
+    </transition>
+    <transition asap="false" bezier="false" source="4" target="6" timedriven="false">
+      <guard>il &lt;= 0 &amp;
+ vc &gt; VcL</guard>
+      <labelposition x="343.0" y="162.0" />
+      <middlepoint />
+    </transition>
+    <transition asap="false" bezier="false" source="6" target="1" timedriven="false">
+      <guard>vc &lt;= VcL</guard>
+      <assignment>mode_out' == 2</assignment>
+      <labelposition x="188.0" y="-178.0" />
+      <middlepoint />
+    </transition>
+  </component>
+  <component id="buck_dcm_vs2_interval_net">
+    <param name="il" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="vc" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="mode_out" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="rci1" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="rcv1" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="rci2" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="rb1" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="rcv2" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="roi1" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="rov1" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="roi2" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="rov2" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="rdv2" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="buckboost_template_1_a00o" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="buckboost_template_1_a01o" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="buckboost_template_1_a10o" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="buckboost_template_1_a11o" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="buckboost_template_1_a00c" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="buckboost_template_1_a01c" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="buckboost_template_1_a10c" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="buckboost_template_1_a11c" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="buckboost_template_1_bounds" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="buckboost_template_1_b0o" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="buckboost_template_1_b1o" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="buckboost_template_1_b0c" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="buckboost_template_1_b1c" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="Vs" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="tmax" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="VcH" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="VcL" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <bind component="buck_dcm_vs2_interval_sys" as="buck_dcm_vs2_interval_sys_1" x="751.0" y="557.0">
+      <map key="il">il</map>
+      <map key="t">t</map>
+      <map key="vc">vc</map>
+      <map key="mode_out">mode_out</map>
+      <map key="rci1">rci1</map>
+      <map key="rcv1">rcv1</map>
+      <map key="rci2">rci2</map>
+      <map key="rb1">rb1</map>
+      <map key="rcv2">rcv2</map>
+      <map key="roi1">roi1</map>
+      <map key="rov1">rov1</map>
+      <map key="roi2">roi2</map>
+      <map key="rov2">rov2</map>
+      <map key="rdv2">rdv2</map>
+      <map key="buckboost_template_1_a00o">-196.2264</map>
+      <map key="buckboost_template_1_a01o">-377.3585</map>
+      <map key="buckboost_template_1_a10o">454.5455</map>
+      <map key="buckboost_template_1_a11o">-45.454545454545450</map>
+      <map key="buckboost_template_1_a00c">-2.716981132075472e+02</map>
+      <map key="buckboost_template_1_a01c">-377.3585</map>
+      <map key="buckboost_template_1_a10c">454.5455</map>
+      <map key="buckboost_template_1_a11c">-45.454545454545450</map>
+      <map key="buckboost_template_1_bounds">1000</map>
+      <map key="buckboost_template_1_b0o">0</map>
+      <map key="buckboost_template_1_b1o">0</map>
+      <map key="buckboost_template_1_b0c">377.3585</map>
+      <map key="buckboost_template_1_b1c">0</map>
+      <map key="Vs">Vs</map>
+      <map key="tmax">tmax</map>
+      <map key="VcH">VcH</map>
+      <map key="VcL">VcL</map>
+    </bind>
+  </component>
+</sspaceex>
+

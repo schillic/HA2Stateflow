@@ -1,0 +1,14 @@
+[System]
+Version=2.2
+SystemType=SingleProcessorSystem
+DAQService=HostService
+Status=Start
+RTP=Master
+
+[Master]
+Type=DS1103
+State=Enabled
+ServiceID=1
+BoardName=unknown
+File=buck_interval_flatten.ppc
+ID=1CDD793B-9655-4BE1-A2D5-EDE9379AD611

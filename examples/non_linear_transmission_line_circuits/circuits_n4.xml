@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" version="0.2" math="SpaceEx">
+  <component id="circuit">
+    <param name="v1" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="v2" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="v3" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="v4" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <location id="2" name="loc1" x="258.0" y="299.0" width="396.0" height="204.0">
+      <invariant>t &lt;= 1</invariant>
+      <flow>v1' == -2*v1 + v2 + 2 - exp(5*v1) - exp(5*(v1 - v2)) + 2 &amp;
+v2' == -2*v2 + v1 + v3 + exp(5*(v1 - v2)) - exp(5*(v2 - v3))&amp;
+v3' == -2*v3 + v2 + v4 + exp(5*(v2 - v3)) - exp(5*(v3 - v4))&amp;
+v4' == -v4 + v3 - 1 + exp(5*(v3 - v4)) &amp; t' == 1</flow>
+    </location>
+    <location id="1" name="loc2" x="778.0" y="274.0" width="388.0" height="182.0">
+      <invariant>1 &lt;= t &lt;= 2</invariant>
+      <flow>v1' == -2*v1 + v2 + 2 - exp(5*v1) - exp(5*(v1 - v2)) + (3 - t) &amp;
+v2' == -2*v2 + v1 + v3 + exp(5*(v1 - v2)) - exp(5*(v2 - v3))&amp;
+v3' == -2*v3 + v2 + v4 + exp(5*(v2 - v3)) - exp(5*(v3 - v4))&amp;
+v4' == -v4 + v3 - 1 + exp(5*(v3 - v4)) &amp; t' == 1</flow>
+    </location>
+    <location id="3" name="loc3" x="464.0" y="562.0" width="482.0" height="198.0">
+      <invariant>t &gt;= 2</invariant>
+      <flow>v1' == -2*v1 + v2 + 2 - exp(5*v1) - exp(5*(v1 - v2)) + 1 &amp;
+v2' == -2*v2 + v1 + v3 + exp(5*(v1 - v2)) - exp(5*(v2 - v3))&amp;
+v3' == -2*v3 + v2 + v4 + exp(5*(v2 - v3)) - exp(5*(v3 - v4))&amp;
+v4' == -v4 + v3 - 1 + exp(5*(v3 - v4)) &amp; t' == 1</flow>
+    </location>
+    <transition source="2" target="1">
+      <guard>t == 1</guard>
+      <labelposition x="-22.0" y="-71.0" />
+    </transition>
+    <transition source="1" target="3">
+      <guard>t == 2</guard>
+      <labelposition x="53.0" y="-39.0" width="70.0" height="58.0" />
+      <middlepoint x="580.0" y="445.5" />
+    </transition>
+  </component>
+  <component id="sys_circuit">
+    <param name="v1" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="v2" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="v3" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="v4" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <bind component="circuit" as="circuit_1" x="240.0" y="237.0">
+      <map key="v1">v1</map>
+      <map key="v2">v2</map>
+      <map key="v3">v3</map>
+      <map key="v4">v4</map>
+      <map key="t">t</map>
+    </bind>
+  </component>
+</sspaceex>
+

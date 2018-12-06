@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" version="0.2" math="SpaceEx">
+  <component id="neuron">
+    <param name="v" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="u" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <location id="1" name="loc1" x="155.0" y="198.0" width="298.0" height="168.0">
+      <invariant>v &lt;= -40</invariant>
+      <flow>v' == 0.01*(0.7*(v + 60)*(v + 40) - u + 70)&amp;
+u' == 0.03*((-2)*(v + 60) - u)</flow>
+    </location>
+    <location id="2" name="loc2" x="703.0" y="178.0" width="318.0" height="176.0">
+      <invariant>-40 &lt;= v &lt;= 35</invariant>
+      <flow>v' == 0.01*(7*(v + 60)*(v + 40) - u + 70)&amp;
+u' == 0.03*((-2)*(v + 60) - u)</flow>
+    </location>
+    <transition source="1" target="2">
+      <guard>v == -40</guard>
+      <labelposition x="-14.0" y="-115.0" width="176.0" height="68.0" />
+      <middlepoint x="352.0" y="140.0" />
+    </transition>
+    <transition source="2" target="1">
+      <guard>v == 35</guard>
+      <assignment>v := -50 &amp; u := u + 100</assignment>
+      <labelposition x="-29.0" y="43.0" width="198.0" height="90.0" />
+      <middlepoint x="363.0" y="256.0" />
+    </transition>
+  </component>
+  <component id="sys_neuron">
+    <param name="v" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="u" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <bind component="neuron" as="neuron_1" x="379.0" y="245.0">
+      <map key="v">v</map>
+      <map key="u">u</map>
+    </bind>
+  </component>
+</sspaceex>
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" version="0.2" math="SpaceEx">
+  <component id="main">
+    <param name="Ii" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="G" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <location id="1" name="loc1" x="274.0" y="119.0" width="608.0" height="406.0">
+      <flow>Ii' == -0.4 * Ii^2 *( (0.0003*G^2 + 0.008) / (0.2*Ii^2 + 2.00001) ) + 0.012 + (0.0000003 * (54660 - 5000.006*Ii) * (0.2*Ii^2 + 2.00001)) / (0.00036*G^2 + 0.00960018 + 0.000000018*Ii^2) &amp;
+G' == -0.0006*G^2 + (0.000000006*G^2 + 0.00000016) / (0.2*Ii^2 + 2.00001) + (0.0015015*Ii*(0.2*Ii^2 + 2.00001)) / (0.00036*G^2 + 0.00960018 + 0.000000018*Ii^2)</flow>
+    </location>
+  </component>
+  <component id="sys">
+    <param name="Ii" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="G" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <bind component="main" as="main_1" x="415.0" y="280.0">
+      <map key="Ii">Ii</map>
+      <map key="G">G</map>
+    </bind>
+  </component>
+</sspaceex>
+

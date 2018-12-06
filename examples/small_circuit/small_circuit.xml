@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" version="0.2" math="SpaceEx">
+  <component id="small_circuit">
+    <param name="y1" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y2" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y3" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y4" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="stop_time" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <location id="1" name="always" x="212.0" y="118.0">
+      <invariant>0&lt;=t &amp; t &lt;=stop_time</invariant>
+      <flow>y1'==-y3 &amp; y2' == y1 &amp; y3' == y1 - y3 -cos(t) &amp; y4' == -y3 &amp; t' ==1</flow>
+    </location>
+  </component>
+  <component id="system">
+    <param name="y1" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y2" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y3" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y4" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="stop_time" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <bind component="small_circuit" as="small_circuit_1">
+      <map key="y1">y1</map>
+      <map key="y2">y2</map>
+      <map key="y3">y3</map>
+      <map key="y4">y4</map>
+      <map key="t">t</map>
+      <map key="stop_time">stop_time</map>
+    </bind>
+  </component>
+</sspaceex>
+

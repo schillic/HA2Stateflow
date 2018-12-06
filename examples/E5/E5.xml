@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" version="0.2" math="SpaceEx">
+  <component id="E5_template">
+    <param name="y1" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y2" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y3" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y4" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="A" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="B" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="C" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="M" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="stop_time" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <location id="1" name="E5" x="230.0" y="142.0" width="166.0" height="206.0">
+      <invariant>0&lt;=t &amp; t&lt;= stop_time</invariant>
+      <flow>y1' == -A*y1 - B*y1*y3 &amp; y2' == A*y1-M*C*y2*y3  &amp; y3' == A*y1-B*y1*y3-M*C*y2*y3 +C*y4 &amp; y4' == B*y1*y3 - C*y4 &amp; t' ==1</flow>
+    </location>
+  </component>
+  <component id="system">
+    <param name="y1" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y2" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y3" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y4" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="A" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="B" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="C" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="M" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="stop_time" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <bind component="E5_template" as="E5_template_1">
+      <map key="y1">y1</map>
+      <map key="y2">y2</map>
+      <map key="y3">y3</map>
+      <map key="y4">y4</map>
+      <map key="A">A</map>
+      <map key="B">B</map>
+      <map key="C">C</map>
+      <map key="M">M</map>
+      <map key="t">t</map>
+      <map key="stop_time">stop_time</map>
+    </bind>
+  </component>
+</sspaceex>
+

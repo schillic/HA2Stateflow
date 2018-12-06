@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" version="0.2" math="SpaceEx">
+  <component id="OREGO_template">
+    <param name="y1" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y2" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y3" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="s" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="q" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="w" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="stop_time" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <location id="1" name="OREGO" x="228.0" y="142.0" width="166.0" height="206.0">
+      <invariant>0&lt;=t &amp; t&lt;=stop_time</invariant>
+      <flow>y1' == s*(y2-y1*y2+y1-q*y1^2) &amp; y2' ==(1/s)*(-y2-y1*y2+y3) &amp; y3' == w*(y1-y3) &amp; t' ==1</flow>
+    </location>
+  </component>
+  <component id="system">
+    <param name="y1" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y2" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y3" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="s" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="q" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="w" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="stop_time" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <bind component="OREGO_template" as="OREGO_template_1" x="481.0" y="52.0">
+      <map key="y1">y1</map>
+      <map key="y2">y2</map>
+      <map key="y3">y3</map>
+      <map key="s">s</map>
+      <map key="q">q</map>
+      <map key="w">w</map>
+      <map key="t">t</map>
+      <map key="stop_time">stop_time</map>
+    </bind>
+  </component>
+</sspaceex>
+

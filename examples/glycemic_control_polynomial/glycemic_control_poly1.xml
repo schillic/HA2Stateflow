@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" version="0.2" math="SpaceEx">
+  <component id="glycemic">
+    <param name="G" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="X" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="I" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="T" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <location id="2" name="loc1" x="262.0" y="205.0" width="316.0" height="174.0">
+      <invariant>G &lt;= 4 &amp; T &lt;= 30</invariant>
+      <flow>G' == -0.01*G - X*(G + 4.5) + 0.0167*T &amp;
+X' == -0.025*X + 0.000013*I &amp;
+I' == -0.093*(I + 15) + 0.083*8.333 &amp;
+T' == 1</flow>
+    </location>
+    <location id="1" name="loc2" x="680.0" y="213.0" width="324.0" height="172.0">
+      <invariant>4 &lt;= G &lt;= 8 &amp; T &lt;= 30</invariant>
+      <flow>G' == -0.01*G - X*(G + 4.5) + 0.0167*T &amp;
+X' == -0.025*X + 0.000013*I &amp;
+I' == -0.093*(I + 15) + 0.083*8.333*(G - 3)&amp;
+T' == 1</flow>
+    </location>
+    <location id="3" name="loc3" x="1093.0" y="208.0" width="324.0" height="172.0">
+      <invariant>G &gt;=8 &amp; T &lt;= 30</invariant>
+      <flow>G' == -0.01*G - X*(G + 4.5) + 0.0167*T &amp;
+X' == -0.025*X + 0.000013*I &amp;
+I' == -0.093*(I + 15) + 0.083*41.67&amp;
+T' == 1</flow>
+    </location>
+    <location id="4" name="loc4" x="255.0" y="432.0" width="324.0" height="172.0">
+      <invariant>G &lt;=4 &amp; 30 &lt;= T &lt;= 120</invariant>
+      <flow>G' == -0.01*G - X*(G + 4.5) + 0.0056*(120 - T) &amp;
+X' == -0.025*X + 0.000013*I &amp;
+I' == -0.093*(I + 15) + 0.083*8.333&amp;
+T' == 1</flow>
+    </location>
+    <location id="5" name="loc5" x="679.0" y="432.0" width="324.0" height="172.0">
+      <invariant>4 &lt;= G &lt;= 8 &amp;  30 &lt;= T &lt;= 120</invariant>
+      <flow>G' == -0.01*G - X*(G + 4.5) + 0.0056*(120 - T)&amp;
+X' == -0.025*X + 0.000013*I &amp;
+I' == -0.093*(I + 15) + 0.083*8.333*(G - 3)&amp;
+T' == 1</flow>
+    </location>
+    <location id="6" name="loc6" x="1095.0" y="435.0" width="324.0" height="172.0">
+      <invariant>G &gt;= 8 &amp; 30 &lt;= T &lt;= 120</invariant>
+      <flow>G' == -0.01*G - X*(G + 4.5) + 0.0056*(120 - T)&amp;
+X' == -0.025*X + 0.000013*I &amp;
+I' == -0.093*(I + 15) + 0.083*41.67&amp;
+T' == 1</flow>
+    </location>
+    <location id="7" name="loc7" x="253.0" y="661.0" width="316.0" height="174.0">
+      <invariant>G &lt;= 4 &amp; T &gt;= 120</invariant>
+      <flow>G' == -0.01*G - X*(G + 4.5) &amp;
+X' == -0.025*X + 0.000013*I &amp;
+I' == -0.093*(I + 15) + 0.083*8.333 &amp;
+T' == 1</flow>
+    </location>
+    <location id="8" name="loc8" x="684.0" y="667.0" width="316.0" height="174.0">
+      <invariant>4 &lt;= G &lt;= 8 &amp; T &gt;= 120</invariant>
+      <flow>G' == -0.01*G - X*(G + 4.5) &amp;
+X' == -0.025*X + 0.000013*I &amp;
+I' == -0.093*(I + 15) + 0.083*8.333*(G - 3) &amp;
+T' == 1</flow>
+    </location>
+    <location id="9" name="loc9" x="1099.0" y="664.0" width="316.0" height="174.0">
+      <invariant>G &gt;= 8 &amp; T &gt;= 120</invariant>
+      <flow>G' == -0.01*G - X*(G + 4.5) &amp;
+X' == -0.025*X + 0.000013*I &amp;
+I' ==-0.093*(I + 15) + 0.083*41.67&amp;
+T' == 1</flow>
+    </location>
+    <transition source="2" target="1">
+      <guard>G &gt;= 4</guard>
+      <labelposition x="-126.0" y="-130.0" width="260.0" height="96.0" />
+      <middlepoint x="471.5" y="144.0" />
+    </transition>
+    <transition source="1" target="3">
+      <guard>G &gt;= 8</guard>
+      <labelposition x="-104.0" y="-130.0" width="196.0" height="76.0" />
+      <middlepoint x="887.5" y="166.0" />
+    </transition>
+    <transition source="1" target="2">
+      <guard>G &lt;= 4</guard>
+      <labelposition x="-47.0" y="19.0" width="90.0" height="60.0" />
+      <middlepoint x="473.0" y="236.0" />
+    </transition>
+    <transition source="3" target="1">
+      <guard>G &lt;= 8</guard>
+      <labelposition x="-27.0" y="35.0" />
+      <middlepoint x="891.5" y="230.0" />
+    </transition>
+    <transition source="4" target="5">
+      <guard>G &gt;= 4</guard>
+      <labelposition x="-22.0" y="-78.0" width="76.0" height="60.0" />
+      <middlepoint x="467.5" y="405.0" />
+    </transition>
+    <transition source="5" target="4">
+      <guard>G &lt;= 4</guard>
+      <labelposition x="-28.0" y="15.0" width="74.0" height="60.0" />
+      <middlepoint x="473.5" y="457.0" />
+    </transition>
+    <transition source="5" target="6">
+      <guard>G &gt;= 8</guard>
+      <labelposition x="-27.0" y="-76.0" width="72.0" height="66.0" />
+      <middlepoint x="887.0" y="409.0" />
+    </transition>
+    <transition source="6" target="5">
+      <guard>G &lt;= 8</guard>
+      <labelposition x="-19.0" y="20.0" />
+      <middlepoint x="887.0" y="462.0" />
+    </transition>
+    <transition source="7" target="8">
+      <guard>G &gt;= 4</guard>
+      <labelposition x="-17.0" y="-72.0" />
+      <middlepoint x="469.5" y="623.0" />
+    </transition>
+    <transition source="8" target="7">
+      <guard>G &lt;= 4</guard>
+      <labelposition x="-30.0" y="15.0" width="78.0" height="58.0" />
+      <middlepoint x="469.5" y="680.0" />
+    </transition>
+    <transition source="8" target="9">
+      <guard>G &gt;= 8</guard>
+      <labelposition x="-14.0" y="-70.0" />
+      <middlepoint x="884.5" y="636.5" />
+    </transition>
+    <transition source="9" target="8">
+      <guard>G &lt;= 8</guard>
+      <labelposition x="-26.0" y="4.0" width="66.0" height="70.0" />
+      <middlepoint x="892.0" y="684.0" />
+    </transition>
+    <transition source="2" target="4">
+      <guard>T &gt;= 30</guard>
+      <labelposition x="-105.0" y="-21.0" />
+    </transition>
+    <transition source="1" target="5">
+      <guard>T &gt;= 30</guard>
+      <labelposition x="29.0" y="-28.0" />
+    </transition>
+    <transition source="3" target="6">
+      <guard>T &gt;= 30</guard>
+      <labelposition x="20.0" y="-21.0" />
+    </transition>
+    <transition source="4" target="7">
+      <guard>T &gt;= 120</guard>
+      <labelposition x="37.0" y="-20.0" width="72.0" height="50.0" />
+    </transition>
+    <transition source="5" target="8">
+      <guard>T &gt;= 120</guard>
+      <labelposition x="17.0" y="-19.0" width="74.0" height="50.0" />
+    </transition>
+    <transition source="6" target="9">
+      <guard>T &gt;= 120</guard>
+      <labelposition x="17.0" y="-22.0" width="86.0" height="50.0" />
+    </transition>
+  </component>
+  <component id="sys_glycemic">
+    <param name="G" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="X" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="I" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="T" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <bind component="glycemic" as="glycemic_1" x="355.0" y="236.0">
+      <map key="G">G</map>
+      <map key="X">X</map>
+      <map key="I">I</map>
+      <map key="T">T</map>
+    </bind>
+  </component>
+</sspaceex>
+

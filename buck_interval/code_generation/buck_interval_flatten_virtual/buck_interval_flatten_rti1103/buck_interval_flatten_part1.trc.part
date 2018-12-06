@@ -1,0 +1,99 @@
+-- ******** Model variables ***************************************************
+
+group "Model Root"
+{
+ flags: COLLAPSED
+}
+  
+  
+	group "RTI Data" -- subsystem-group
+	{
+	 flags: COLLAPSED
+	 desc:  ""
+	}
+
+
+	endgroup -- subsystem-group "RTI Data"
+  
+  
+	group "Source_1" -- subsystem-group
+	{
+	 flags: COLLAPSED
+	 desc:  ""
+	}
+
+
+
+		group "Constant" -- block-group
+		{
+		 block: "Constant"
+		 desc:  ""
+		 flags: BLOCK|COLLAPSED
+		}
+			-- Skipping output Out1
+			p_1_buck_interval_flatten_real_T_0[0]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "Value"
+			 flags:   PARAM
+			}
+
+
+		endgroup -- block-group "Constant"
+
+  
+  
+		group "buck_dcm_vs2_interval_sys_1" -- subsystem-group
+		{
+		 flags: COLLAPSED
+		 desc:  ""
+		}
+
+			p_0_buck_interval_flatten_real_T_0[0]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "il_out"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+			p_0_buck_interval_flatten_real_T_0[1]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "t_out"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+			p_0_buck_interval_flatten_real_T_0[2]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "vc_out"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+			p_0_buck_interval_flatten_real_T_0[3]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "mode_out_out"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+			p_0_buck_interval_flatten_real_T_0[4]
+			{
+			 type:    flt(64,IEEE)*
+			 alias:   "buck_dcm_vs2_interval_sys_1_location"
+			 desc:    ""
+			 flags:   OUTPUT|READONLY
+			}
+
+
+
+
+		endgroup -- subsystem-group "buck_dcm_vs2_interval_sys_1"
+
+
+	endgroup -- subsystem-group "Source_1"
+
+
+
+
+endgroup -- "Model Root"

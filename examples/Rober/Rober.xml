@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" version="0.2" math="SpaceEx">
+  <component id="Rober_template">
+    <param name="y1" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y2" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="y3" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="k1" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="k2" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="k3" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="stop_time" type="real" local="false" d1="1" d2="1" dynamics="const" />
+    <location id="1" name="Rober" x="230.0" y="142.0" width="166.0" height="206.0">
+      <invariant>0&lt;= t &amp; t &lt;= stop_time</invariant>
+      <flow>y1' == -k1*y1 +k3*y2*y3 &amp; y2' == k1*y1 -k2*y2*y2 - k3*y2*y3 &amp; y3' == k2*y2^2 &amp; t' ==1</flow>
+    </location>
+  </component>
+  <component id="system">
+    <param name="y1" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y2" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="y3" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="k1" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="k2" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="k3" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="stop_time" type="real" local="false" d1="1" d2="1" dynamics="const" controlled="true" />
+    <bind component="Rober_template" as="Rober_template_1" x="375.0" y="0.0">
+      <map key="y1">y1</map>
+      <map key="y2">y2</map>
+      <map key="y3">y3</map>
+      <map key="k1">k1</map>
+      <map key="k2">k2</map>
+      <map key="k3">k3</map>
+      <map key="t">t</map>
+      <map key="stop_time">stop_time</map>
+    </bind>
+  </component>
+</sspaceex>
+

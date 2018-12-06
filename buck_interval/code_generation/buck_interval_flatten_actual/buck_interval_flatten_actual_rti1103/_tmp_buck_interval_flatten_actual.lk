@@ -1,0 +1,76 @@
+;*************************************************************************
+;               dSPACE MCCPPC Default Linker Command File
+;*************************************************************************
+LISTMAP PUBLICS,NOLOCALS,CROSSREFS
+PUBLIC DS_PPC_BOARD = 1103
+
+;*************************************************************************
+; Specify starting address 
+;*************************************************************************
+EXTERN  _ds1103_reset
+START   _ds1103_reset
+
+
+;*************************************************************************
+; These sizes can be changed but its not recommend to do that
+; because performance of the system possibly is decreased then.
+;*************************************************************************
+PUBLIC STACK_SIZE = 0x10000
+
+
+;*************************************************************************
+; This size must not be changed !!!
+; It is reserved for internal use of the RTLib.
+;*************************************************************************
+PUBLIC DS_HEAP_SIZE = 0x10000    
+
+
+;*************************************************************************
+; Select the sqrt function to use
+;*************************************************************************
+;PUBLIC  sqrt = sqrt_KF
+
+
+;*************************************************************************
+; MEMORY MAPPING :  do not change anything in the following !!!
+;*************************************************************************
+ALIGN = 4
+;*************************************************************************
+; local memory
+;*************************************************************************
+ORDER    except_tbl=0x0         ; exception table, do not change this
+ORDER   .text
+ORDER	  .init
+ORDER	  initdat
+ORDER	  .rodata
+ORDER	  .rodata1
+ORDER   .data
+ORDER   .bss
+ORDER   ioports
+
+;*************************************************************************
+; global memory
+;*************************************************************************
+ORDER   config_sect = 0x08000000
+ORDER   SlvFwSection
+
+RESADD	0x10000000, 0x17FFFFFF    ;IO range
+
+
+
+LOAD buck_interval_flatten_actual.o04
+LOAD buck_interval_flatten_actual_data.o04
+LOAD buck_interval_flatten_actual_trc_ptr.o04
+LOAD rtGetInf.o04
+LOAD rtGetNaN.o04
+LOAD rt_nonfinite.o04
+LOAD rti_sim_engine.o04
+LOAD rti_init_c.o04
+LOAD rt_sim.o04
+LOAD rti_assert.o04
+LOAD rti_slv1103.o04
+LOAD "C:\Program Files\dSPACE RCPHIL 2014-A\DS1103\RTKernel\rtk1103.lib"
+LOAD "C:\Program Files\dSPACE RCPHIL 2014-A\DS1103\ds1103.lib"
+LOAD "C:\Program Files\dSPACE RCPHIL 2014-A\Compiler\PPCTools\LIB\mppc_b.lib"
+LOAD "C:\Program Files\dSPACE RCPHIL 2014-A\Compiler\PPCTools\LIB\mppchb.lib"
+ 

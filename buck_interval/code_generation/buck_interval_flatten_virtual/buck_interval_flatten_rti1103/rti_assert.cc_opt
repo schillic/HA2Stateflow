@@ -1,0 +1,60 @@
+-c -KE
+-nKu
+-nKv
+-nKia
+-p604E
+-o
+rti_assert.o04
+-nQi
+-QmsC0001
+-Qms0111
+-QmsC0177
+-QmsC0186
+-QmsC0188
+-QmsC0191
+-QmsC0193
+-QmeC0223
+-QmeC0233
+-QmsC0236
+-QmsC0237
+-QmwC0260
+-QmsC0340
+-QmsC0381
+-QmsC0514
+-Qms0550
+-QmsC0826
+-Qms1430
+-Qms1457
+-Ot
+-Oi
+-Or
+-Ox
+-D_INLINE
+-DSSTATE=RUN
+-DSMODE=RTSIM
+-DUSE_RTMODEL
+-DMODEL=buck_interval_flatten
+-DMT=0
+-DRT
+-DNUMST=2
+-DNCSTATES=4
+-DTID01EQ=1
+-DNO_PRINTF
+-D_DS1103
+-DRTI_BUILD
+-DRTI_ASSERTION_MODE=RTI_ASSERTION_MODE_OFF
+-J.
+-J..
+"-JC:\Program Files\dSPACE RCPHIL 2014-A\Compiler\PPCTools\INC"
+"-JC:\Program Files\dSPACE RCPHIL 2014-A\DS1103\RTKernel"
+"-JC:\Program Files\dSPACE RCPHIL 2014-A\DS1103"
+"-JC:\Program Files\dSPACE RCPHIL 2014-A\MATLAB\RTI\RTI\C"
+"-JC:\Program Files\dSPACE RCPHIL 2014-A\MATLAB\RTI\RTI\SFcn"
+"-JC:\Program Files\dSPACE RCPHIL 2014-A\MATLAB\RTI\RTI1103\C"
+"-JC:\Program Files\dSPACE RCPHIL 2014-A\MATLAB\RTI\RTI1103\SFcn"
+-JC:\PROGRA~1\MATLAB\R2014a\simulink\include
+-JC:\PROGRA~1\MATLAB\R2014a\extern\include
+-JC:\PROGRA~1\MATLAB\R2014a\rtw\c\src
+-JC:\PROGRA~1\MATLAB\R2014a\rtw\c\src\ext_mode\common
+-JC:\Users\Davoudi\Desktop\MATLAB~2\BUCK_I~3\buck_interval_flatten_rti1103
+-JC:\Users\Davoudi\Desktop\MATLAB~2\BUCK_I~3 

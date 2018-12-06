@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" version="0.2" math="SpaceEx">
+  <component id="circuit">
+    <param name="v1" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="v2" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="v3" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="v4" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="v5" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="v6" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" />
+    <location id="2" name="loc1" x="271.0" y="301.0" width="298.0" height="168.0">
+      <invariant>t &lt;= 1</invariant>
+      <flow>v1' == -2*v1 + v2 + 2 - exp(5*v1) - exp(5*(v1 - v2)) + 2 &amp;
+v2' == -2*v2 + v1 + v3 + exp(5*(v1 - v2)) - exp(5*(v2 - v3))&amp; 
+v3' == -2*v3 + v2 + v4 + exp(5*(v2 - v3)) - exp(5*(v3 - v4))&amp;
+v4' == -2*v4 + v3 + v5 + exp(5*(v3 - v4)) - exp(5*(v4 - v5)) &amp;
+v5' == -2*v5 + v4 + v6 + exp(5*(v4 - v5)) - exp(5*(v5 - v6))&amp;
+v6' == -v6 + v5 - 1 + exp(5*(v5 - v6)) &amp; t' == 1</flow>
+    </location>
+    <location id="1" name="loc2" x="680.0" y="298.0" width="298.0" height="168.0">
+      <invariant>1 &lt;= t &lt;= 2</invariant>
+      <flow>v1' == -2*v1 + v2 + 2 - exp(5*v1) - exp(5*(v1 - v2)) + (3 - t) &amp;
+v2' == -2*v2 + v1 + v3 + exp(5*(v1 - v2)) - exp(5*(v2 - v3))&amp; 
+v3' == -2*v3 + v2 + v4 + exp(5*(v2 - v3)) - exp(5*(v3 - v4))&amp;
+v4' == -2*v4 + v3 + v5 + exp(5*(v3 - v4)) - exp(5*(v4 - v5)) &amp;
+v5' == -2*v5 + v4 + v6 + exp(5*(v4 - v5)) - exp(5*(v5 - v6))&amp;
+v6' == -v6 + v5 - 1 + exp(5*(v5 - v6)) &amp; t' == 1</flow>
+    </location>
+    <location id="3" name="loc3" x="465.0" y="562.0" width="298.0" height="168.0">
+      <invariant>t &gt;= 2</invariant>
+      <flow>v1' == -2*v1 + v2 + 2 - exp(5*v1) - exp(5*(v1 - v2)) + 1 &amp;
+v2' == -2*v2 + v1 + v3 + exp(5*(v1 - v2)) - exp(5*(v2 - v3))&amp; 
+v3' == -2*v3 + v2 + v4 + exp(5*(v2 - v3)) - exp(5*(v3 - v4))&amp;
+v4' == -2*v4 + v3 + v5 + exp(5*(v3 - v4)) - exp(5*(v4 - v5)) &amp;
+v5' == -2*v5 + v4 + v6 + exp(5*(v4 - v5)) - exp(5*(v5 - v6))&amp;
+v6' == -v6 + v5 - 1 + exp(5*(v5 - v6)) &amp; t' == 1</flow>
+    </location>
+    <transition source="2" target="1">
+      <guard>t == 1</guard>
+      <labelposition x="-22.0" y="-71.0" />
+    </transition>
+    <transition source="1" target="3">
+      <guard>t == 2</guard>
+      <labelposition x="53.0" y="-39.0" width="70.0" height="58.0" />
+      <middlepoint x="580.0" y="445.5" />
+    </transition>
+  </component>
+  <component id="sys_circuit">
+    <param name="v1" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="v2" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="v3" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="v4" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="v5" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="v6" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <param name="t" type="real" local="false" d1="1" d2="1" dynamics="any" controlled="true" />
+    <bind component="circuit" as="circuit_1" x="314.0" y="316.0">
+      <map key="v1">v1</map>
+      <map key="v2">v2</map>
+      <map key="v3">v3</map>
+      <map key="v4">v4</map>
+      <map key="v5">v5</map>
+      <map key="v6">v6</map>
+      <map key="t">t</map>
+    </bind>
+  </component>
+</sspaceex>
+

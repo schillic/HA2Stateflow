@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<sspaceex xmlns="http://www-verimag.imag.fr/xml-namespaces/sspaceex" math="SpaceEx" version="0.2">
+   <component id="null_net">
+      <param d1="1" d2="1" dynamics="any" local="false" name="gt" type="real"/>
+      <param d1="1" d2="1" dynamics="any" local="false" name="il" type="real"/>
+      <param d1="1" d2="1" dynamics="any" local="false" name="vc" type="real"/>
+      <param d1="1" d2="1" dynamics="any" local="false" name="t" type="real"/>
+      <param d1="1" d2="1" dynamics="any" local="false" name="rci1" type="real"/>
+      <param d1="1" d2="1" dynamics="any" local="false" name="rcv1" type="real"/>
+      <param d1="1" d2="1" dynamics="any" local="false" name="rci2" type="real"/>
+      <param d1="1" d2="1" dynamics="any" local="false" name="rcv2" type="real"/>
+      <param d1="1" d2="1" dynamics="any" local="false" name="rb1" type="real"/>
+      <param d1="1" d2="1" dynamics="any" local="false" name="roi1" type="real"/>
+      <param d1="1" d2="1" dynamics="any" local="false" name="rov1" type="real"/>
+      <param d1="1" d2="1" dynamics="any" local="false" name="roi2" type="real"/>
+      <param d1="1" d2="1" dynamics="any" local="false" name="rov2" type="real"/>
+      <param d1="1" d2="1" dynamics="any" local="false" name="rdv2" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="a00o" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="a01o" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="a10o" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="a11o" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="a00c" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="a01c" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="a10c" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="a11c" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="bounds" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="T" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="b0o" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="b1o" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="b0c" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="b1c" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="Vs" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="tmax" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="Vtol" type="real"/>
+      <param d1="1" d2="1" dynamics="const" local="false" name="Vref" type="real"/>
+      <location id="1" name="charging">
+         <invariant>gt &gt;= 0.0 &amp;
+ gt &lt;= tmax &amp;
+ il &gt; 0.0 &amp;
+ vc &gt;= 0.0 - bounds &amp;
+ vc &lt;= Vref + Vtol &amp;
+ rci1 &gt;= -97.8505 &amp;
+ rci1 &lt;= 97.8505 &amp;
+ rcv1 &gt;= -392.6099 &amp;
+ rcv1 &lt;= 392.6099 &amp;
+ rb1 &gt;= -181.2046 &amp;
+ rb1 &lt;= 181.2046 &amp;
+ rci2 &gt;= -163.7018 &amp;
+ rci2 &lt;= 163.7018 &amp;
+ rcv2 &gt;= -94.6211 &amp;
+ rcv2 &lt;= 94.6211</invariant>
+         <flow>gt' == 1.0 &amp;
+ il' == a00c * il + rci1 + a01c * vc + rcv1 + b0c * Vs + rb1 &amp;
+ vc' == a10c * il + rci2 + a11c * vc + rcv2 + b1c * Vs &amp;
+ t' == 1.0</flow>
+      </location>
+      <location id="2" name="discharging">
+         <invariant>gt &gt;= 0.0 &amp;
+ gt &lt;= tmax &amp;
+ vc &gt;= Vref - Vtol &amp;
+ vc &lt;= bounds &amp;
+ il &gt; 0.0 &amp;
+ roi1 &gt;= -70.6698 &amp;
+ roi1 &lt;= 70.6698 &amp;
+ rov1 &gt;= -392.6099 &amp;
+ rov1 &lt;= 392.6099 &amp;
+ roi2 &gt;= -163.7018 &amp;
+ roi2 &lt;= 163.7018 &amp;
+ rov2 &gt;= -94.6211 &amp;
+ rov2 &lt;= 94.6211</invariant>
+         <flow>gt' == 1.0 &amp;
+ il' == a00o * il + roi1 + a01o * vc + rov1 + b0o * Vs &amp;
+ vc' == a10o * il + roi2 + a11o * vc + rov2 + b1o * Vs &amp;
+ t' == 1.0</flow>
+      </location>
+      <location id="3" name="discontinuous">
+         <invariant>gt &gt;= 0.0 &amp;
+ gt &lt;= tmax &amp;
+ vc &gt;= Vref - Vtol &amp;
+ vc &lt;= bounds &amp;
+ il &lt;= 0.0 &amp;
+ rdv2 &gt;= -94.6211 &amp;
+ rdv2 &lt;= 94.6211</invariant>
+         <flow>gt' == 1.0 &amp;
+ il' == 0.0 &amp;
+ vc' == a11o * vc + rdv2 + b1o * Vs &amp;
+ t' == 1.0</flow>
+      </location>
+      <transition asap="false" bezier="false" source="1" target="2" timedriven="false">
+         <guard>vc &gt;= Vref + Vtol</guard>
+         <assignment>gt' == gt  &amp;
+  vc' == vc  &amp;
+  il' == il</assignment>
+         <labelposition/>
+         <middlepoint/>
+      </transition>
+      <transition asap="false" bezier="false" source="2" target="1" timedriven="false">
+         <guard>vc &gt;= Vref - Vtol</guard>
+         <assignment>gt' == gt  &amp;
+  vc' == vc  &amp;
+  il' == il</assignment>
+         <labelposition/>
+         <middlepoint/>
+      </transition>
+      <transition asap="false" bezier="false" source="2" target="3" timedriven="false">
+         <guard>il &lt;= 0.0</guard>
+         <assignment>gt' == gt  &amp;
+  vc' == vc  &amp;
+  il' == il</assignment>
+         <labelposition/>
+         <middlepoint/>
+      </transition>
+      <transition asap="false" bezier="false" source="3" target="1" timedriven="false">
+         <guard>vc &gt;= Vref - Vtol</guard>
+         <assignment>gt' == gt  &amp;
+  vc' == vc  &amp;
+  il' == il</assignment>
+         <labelposition/>
+         <middlepoint/>
+      </transition>
+   </component>
+   <component id="null_sys">
+      <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="gt" type="real"/>
+      <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="il" type="real"/>
+      <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="vc" type="real"/>
+      <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="t" type="real"/>
+      <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="rci1" type="real"/>
+      <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="rcv1" type="real"/>
+      <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="rci2" type="real"/>
+      <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="rcv2" type="real"/>
+      <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="rb1" type="real"/>
+      <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="roi1" type="real"/>
+      <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="rov1" type="real"/>
+      <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="roi2" type="real"/>
+      <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="rov2" type="real"/>
+      <param controlled="true" d1="1" d2="1" dynamics="any" local="false" name="rdv2" type="real"/>
+      <param controlled="true" d1="1" d2="1" dynamics="const" local="false" name="tmax" type="real"/>
+      <bind as="network" component="null_net">
+         <map key="gt">gt</map>
+         <map key="il">il</map>
+         <map key="vc">vc</map>
+         <map key="t">t</map>
+         <map key="rci1">rci1</map>
+         <map key="rcv1">rcv1</map>
+         <map key="rci2">rci2</map>
+         <map key="rcv2">rcv2</map>
+         <map key="rb1">rb1</map>
+         <map key="roi1">roi1</map>
+         <map key="rov1">rov1</map>
+         <map key="roi2">roi2</map>
+         <map key="rov2">rov2</map>
+         <map key="rdv2">rdv2</map>
+         <map key="a00o">-196.3049370691673</map>
+         <map key="a01o">-377.50949436378323</map>
+         <map key="a10o">454.727345483648</map>
+         <map key="a11o">-45.509127293101386</map>
+         <map key="a00c">-271.80683594192396</map>
+         <map key="a01c">-377.50949436378323</map>
+         <map key="a10c">454.727345483648</map>
+         <map key="a11c">-45.509127293101386</map>
+         <map key="bounds">100.0</map>
+         <map key="T">2.0E-5</map>
+         <map key="b0o">0.0</map>
+         <map key="b1o">0.0</map>
+         <map key="b0c">377.50949436378323</map>
+         <map key="b1c">0.0</map>
+         <map key="Vs">24.0</map>
+         <map key="tmax">tmax</map>
+         <map key="Vtol">0.1</map>
+         <map key="Vref">12.0</map>
+      </bind>
+   </component>
+</sspaceex>
