@@ -25,20 +25,26 @@ To run the translator, do the following:
    For that, right-click on the folder "src" and select "Add to Path" and the subcategory "Selected Folders and Subfolders".
 * Run the following command (where you replace "MODEL_NAME" by a meaningful relative path of your model file):
 
-    `SpaceExToStateflow('MODEL_NAME', '-s');`
+```matlab
+    SpaceExToStateflow('MODEL_NAME', '-s');
+```
 
 This produces a StateFlow model (which might take some time, especially when the Simulink libraries have not been loaded yet).
 
 
   Example call:
   
-     `SpaceExToStateflow('examples\vanderpol\vanderpol.xml', '-s');`
+```matlab
+     SpaceExToStateflow('examples\vanderpol\vanderpol.xml', '-s');
+```
 
 ---
 
 To run the simulation loop, run the following (parametrized) command:
 
-    `simulationLoop('MODEL_NAME', NUM_SIMULATION, MAX_TIME, NUM_BACKTRACK);`
+```matlab
+    simulationLoop('MODEL_NAME', NUM_SIMULATION, MAX_TIME, NUM_BACKTRACK);
+```
 
 Here, the parameters denote the following:
 * the model name (automatically taken from the `*.xml` file)
@@ -51,10 +57,14 @@ Again, this might take some time the first time of the call because Simulink com
 
   Example call:
   
-     `simulationLoop('vanderpol', 5, 50, 3);`
+```matlab
+     simulationLoop('vanderpol', 5, 50, 3);
+```
 
 ---
 
 To reproduce the table of benchmarks in the appendix, run the following script file:
 
-    `generateTable`
+```matlab
+    generateTable
+```
