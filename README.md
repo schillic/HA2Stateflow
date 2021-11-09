@@ -1,4 +1,5 @@
 This is supplementary material for the article [*Hybrid automata: from verification to implementation*](http://dx.doi.org/10.1007/s10009-017-0458-1), STTT, 2017.
+See [below](#citation) for how to cite this work.
 
 The tool has also been integrated in [HyST](https://github.com/verivital/hyst).
 
@@ -10,8 +11,8 @@ The archive contains:
 * a folder `src` that includes the source code of the translator
 * a folder `buck_interval` that includes all necessary files to reproduce the experimental results for the buck converter evaluated in the paper;
   Particularly, this folder contains the following:
-   * SpaceEx model files for buck converter using intervals 
-   * a folder "buck_interval_data" that includes data obtained from SLSF simulation, reachability analysis with SpaceEx, and hardware experiment with dSPACE DS1103 system 
+   * SpaceEx model files for buck converter using intervals
+   * a folder "buck_interval_data" that includes data obtained from SLSF simulation, reachability analysis with SpaceEx, and hardware experiment with dSPACE DS1103 system
    * a folder "code_generation" that includes C code generation for the buck converter by dSPACE
    * a file "dSPACE Experiment Report" that describes in details the dSPACE experiment for the buck converter
 
@@ -33,7 +34,7 @@ This produces a StateFlow model (which might take some time, especially when the
 
 
   Example call:
-  
+
 ```matlab
      SpaceExToStateflow('examples\vanderpol\vanderpol.xml', '-s');
 ```
@@ -56,7 +57,7 @@ Again, this might take some time the first time of the call because Simulink com
 
 
   Example call:
-  
+
 ```matlab
      simulationLoop('vanderpol', 5, 50, 3);
 ```
@@ -67,4 +68,25 @@ To reproduce the table of benchmarks in the appendix, run the following script f
 
 ```matlab
     generateTable
+```
+
+# Citation
+
+```bibtex
+@article{BakBBJNS19,
+  author    = {Stanley Bak and
+               Omar Ali Beg and
+               Sergiy Bogomolov and
+               Taylor T. Johnson and
+               Luan Viet Nguyen and
+               Christian Schilling},
+  title     = {Hybrid automata: from verification to implementation},
+  journal   = {Int. J. Softw. Tools Technol. Transf.},
+  volume    = {21},
+  number    = {1},
+  pages     = {87--104},
+  year      = {2019},
+  url       = {https://doi.org/10.1007/s10009-017-0458-1},
+  doi       = {10.1007/s10009-017-0458-1}
+}
 ```
